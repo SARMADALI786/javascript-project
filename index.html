@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-image: linear-gradient(to right, rgb(255, 72, 72),rgb(65, 67, 219));
+        }
+        div{
+            margin: auto;
+            height: 10vw;
+            width: 25vw;
+            background-color: rgb(133, 54, 207);
+            text-align: center;
+            margin-top: 18vw;
+            box-shadow: 5px 5px rgb(97, 86, 86);
+        }
+        #input{
+            height: 20px;
+            padding: 0;
+            margin-top: 4vw;
+            background-color: rgb(236, 231, 223);
+        }
+        #copyBtn{
+            margin: 0;
+            padding: 0;
+        }
+        #mainBtn{
+            margin: 10px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="input" name="" placeholder="Create Password" >
+        <button id="mainBtn" onclick="copyText()"><i class="fa fa-copy" style="font-size:14px"></i></button>
+        <br>
+        <button id="copyBtn" onclick="myFunction()">Generate Password</button>
+    </div>
+    <script>
+        function myFunction(){
+            let string="qwertyuiopasdfghjklzxcvbnm1234567890[]\;/Q/W//.,ERTYU?IO//,79&^%PLKJMNH/[]BGVFCDXSAZ[[{}|:>?<+_)(*&^%$#@!h";
+            let PasswordLength=20;
+            Password='';
+            for(i=0;i<PasswordLength;i++){
+            let mathFloor=Math.floor(Math.random()*string.length);
+            Password +=string[mathFloor];
+            }
+            console.log(Password);
+            document.getElementById("input").value=Password;
+        }
+        //copy function delow//
+        function copyText(){
+           let inputVal=document.getElementById("input").value;
+           if(inputVal==''){
+               alert("First Click on 'Generaate Password' button");
+           }
+           else{
+            let TextCopy=document.getElementById("input");
+            TextCopy.select();
+            //TextCopy.setSelectinRange(0, 9999);
+            document.execCommand("copy");
+            alert("Copied the PASSWORD" + '  :  ' + TextCopy.value);
+           }
+        }
+    </script>
+</body>
+</html>
